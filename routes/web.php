@@ -28,9 +28,9 @@ use App\Http\Controllers\Auth\LoginController;
 Route::get('/', function () {
     return view('home');
 });
-Route::get('/error', function () {
-    return view('errors.404');
-})->name('error_page');
+// Route::get('/error', function () {
+//     return view('errors.404');
+// })->name('error_page');
 
 
 //News

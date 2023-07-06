@@ -6,25 +6,15 @@ use Illuminate\Support\Facades\Hash;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\User;
-use App\Models\About;
 
-class DatabaseSeeder extends Seeder
+class UserTableData extends Seeder
 {
-    /**
-     * Seed the application's database.
-     *
-     * @return void
-     */
     public function run()
     {
         User::insert([
             'name' => 'marwan',
             'email' => 'marwanmohamed7887@gmail.com',
-            'password' => Hash::make($request->password)
+            'password' => Hash::make(12345678)
         ]);
-        About::insert([
-            'about' => 'No Data!'
-        ]);
-        
     }
 }
