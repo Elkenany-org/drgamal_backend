@@ -53,10 +53,10 @@ Route::prefix('news')->group(function () {
 });
 
 
-//Articles
+//About
 Route::prefix('about')->group(function () {
-    Route::get('/edit/{id}' , [AboutController::class,'edit'])->name('About.edit');
-    Route::post('/update/{id}' , [AboutController::class,'update'])->name('About.update');
+    Route::get('/edit' , [AboutController::class,'edit'])->name('About.edit');
+    Route::post('/update' , [AboutController::class,'update'])->name('About.update');
 });
 
 //info

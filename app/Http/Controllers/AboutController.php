@@ -8,13 +8,13 @@ use Illuminate\Http\Request;
 class AboutController extends Controller
 { 
  
-    public function edit($id)
+    public function edit()
     {
-        $article = Article::where('id' , 1);
-        return view('About.edit')->with('article' , $article);
+        $about = About::where('id' , 1)->first();
+        return view('About.edit')->with('about' , $about);
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
         $request->validate([
             'about' => 'required',
@@ -24,6 +24,6 @@ class AboutController extends Controller
         $about->about = $request->about;
         $about->save();
         
-        return redirect()->route('Home');
+        return redirect()->route('home');
     }
 }

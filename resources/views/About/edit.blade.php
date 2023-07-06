@@ -6,13 +6,13 @@
   <div class="card-style-3 mb-30">
       <div class="card-content">            
           <div class="row">
-            <form action="{{route('About.update',$about->id)}}" method="POST">
+            <form action="{{route('About.update')}}" method="POST">
               @csrf
 
               <div class="col-12">
                 <div class="input-style-1">
-                  <label for="description">عن دكتور جمال</label>
-                  <textarea name="description" id="textarea1" oninput="countCharacters(this,2)">{{$article->description}}</textarea>
+                  <label for="about">عن دكتور جمال الكناني</label>
+                  <textarea name="about" id="textarea1" oninput="countCharacters(this,2)">{{$about->about}}</textarea>
                   <div dir="ltr"><span id="2"></span></div>
                 </div>
               </div>

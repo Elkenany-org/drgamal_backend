@@ -49,7 +49,7 @@
         </ul>
     </li>
     
-    <li class=" nav-item @if(request()->routeIs('Articles.index') || request()->routeIs('Articles.archive')) active @else noneactive @endif nav-item-has-children">
+    {{-- <li class=" nav-item @if(request()->routeIs('Articles.index') || request()->routeIs('Articles.archive')) active @else noneactive @endif nav-item-has-children">
         <a class="search collapsed" class="" data-bs-toggle="collapse" data-bs-target="#ddmenu_10"
            aria-controls="ddmenu_10" aria-expanded="true" aria-label="Toggle navigation">
             <span class="icon">
@@ -71,7 +71,7 @@
             <li>
             </li>
         </ul>
-    </li>
+    </li> --}}
         
     <li class=" nav-item @if(request()->routeIs('Jobs.index') || request()->routeIs('Jobs.archive')) active @else noneactive @endif nav-item-has-children">
         <a class="search collapsed" class="" data-bs-toggle="collapse" data-bs-target="#ddmenu_3"
@@ -128,6 +128,14 @@
                 <i class="fa-solid fa-message"></i>
               </span>
             <span class="text">الشكاوي</span>
+        </a>
+    </li>
+    <li class="nav-item @if(request()->routeIs('About.edit')) active @endif">
+        <a class="search " href="{{route('About.edit')}}">
+              <span class="icon">
+                <i class="fa-solid fa-circle-info"></i>
+              </span>
+            <span class="text">عن دكتور جمال</span>
         </a>
     </li>
     @if (Auth::check() && Auth::user()->role == 'admin')
