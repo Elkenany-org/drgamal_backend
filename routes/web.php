@@ -7,6 +7,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\UserController;
@@ -33,23 +34,14 @@ Route::get('/', function () {
 // })->name('error_page');
 
 
-//News
-Route::prefix('news')->group(function () {
-    Route::get('/' , [NewsController::class,'index'])->name('News.index');
-    Route::get('/archive' , [NewsController::class,'archive'])->name('News.archive');
-    Route::get('/create' , [NewsController::class, 'create'])->name('News.create');
-    Route::post('/store' , [NewsController::class, 'store'])->name('News.store');
-    Route::get('/show/{id}' , [NewsController::class,'show'])->name('News.show');
-    Route::get('/edit/{id}' , [NewsController::class,'edit'])->name('News.edit');
-    Route::post('/update/{id}' , [NewsController::class,'update'])->name('News.update');
-    Route::get('/destroy/{id}' , [NewsController::class,'soft_delete'])->name('News.soft_delete');
-    Route::get('/restore/{id}' , [NewsController::class,'restore'])->name('News.restore');
-    Route::get('/delete/{id}' , [NewsController::class,'hard_delete'])->name('News.hard_delete');
-    Route::get('/search', [NewsController::class, 'search'])->name('News.search');
-    Route::get('/archive_search', [NewsController::class, 'archive_search'])->name('News.archive_search');
-    Route::get('/title_search', [NewsController::class, 'title_search'])->name('News.title_search');
-    Route::get('/archive_title_search', [NewsController::class, 'archive_title_search'])->name('News.archive_title_search');
-    Route::post('/searchByDate', [NewsController::class, 'searchByDate'])->name('News.searchByDate');
+//Companies
+Route::prefix('companies')->group(function () {
+    Route::get('/' , [CompanyController::class,'index'])->name('companies.index');
+    Route::get('/create' , [CompanyController::class, 'create'])->name('companies.create');
+    Route::post('/store' , [CompanyController::class, 'store'])->name('companies.store');
+    Route::get('/edit/{id}' , [CompanyController::class,'edit'])->name('companies.edit');
+    Route::post('/update/{id}' , [CompanyController::class,'update'])->name('companies.update');
+    Route::get('/delete/{id}' , [CompanyController::class,'destroy'])->name('companies.delete');
 });
 
 

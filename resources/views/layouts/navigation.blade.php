@@ -1,23 +1,31 @@
 <input type="text" class="mySearch mx-auto d-block" id="mySearch" onkeyup="search(this.value)" placeholder="بحث" title="Type in a category">
 <ul>
 
-    <li class=" nav-item @if(request()->routeIs('News.index') || request()->routeIs('News.archive')) active @else noneactive @endif nav-item-has-children">
+    <li class="nav-item @if(request()->routeIs('About.edit')) active @endif">
+        <a class="search " href="{{route('About.edit')}}">
+              <span class="icon">
+                <i class="fa-solid fa-circle-info"></i>
+              </span>
+            <span class="text">عن دكتور جمال</span>
+        </a>
+    </li>
+    <li class=" nav-item @if(request()->routeIs('Companies.index')) || request()->routeIs('Companies.create'))  active @else noneactive @endif nav-item-has-children">
         <a class="search collapsed"  data-bs-toggle="collapse" data-bs-target="#ddmenu_2"
         aria-controls="ddmenu_2" aria-expanded="true" aria-label="Toggle navigation">
             <span class="icon">
-                <i class="fa-solid fa-newspaper fa-sm"></i>
+                <i class="fa-solid fa-building"></i>
             </span>
-            <span class="text">الاخبار</span>
+            <span class="text">الشركات</span>
         </a>
         <ul id="ddmenu_2" class="dropdown-nav collapse">
             <li>
-                <a href="{{ route('News.index') }}">
+                <a href="{{ route('companies.index') }}">
                     <div class="ico w-fit"><i class="fa-solid fa-eye m-0" style="font-size: 14px"></i></div>
                     عرض
                 </a>
             </li>
             <li>
-                <a href="{{ route('News.create') }}">
+                <a href="{{ route('companies.create') }}">
                     <div class="ico w-fit"><i class="fa-solid fa-plus m-0" style="font-size: 14px"></i></div>
                     اضافة
                 </a>
@@ -130,14 +138,7 @@
             <span class="text">الشكاوي</span>
         </a>
     </li>
-    <li class="nav-item @if(request()->routeIs('About.edit')) active @endif">
-        <a class="search " href="{{route('About.edit')}}">
-              <span class="icon">
-                <i class="fa-solid fa-circle-info"></i>
-              </span>
-            <span class="text">عن دكتور جمال</span>
-        </a>
-    </li>
+   
     @if (Auth::check() && Auth::user()->role == 'admin')
     <li class=" nav-item @if(request()->routeIs('users.index') || request()->routeIs('register_form')) active @else noneactive @endif nav-item-has-children">
         <a class="search collapsed"  data-bs-toggle="collapse" data-bs-target="#ddmenu_6"
