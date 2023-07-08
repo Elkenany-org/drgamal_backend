@@ -177,11 +177,11 @@
 
 
     <li class="nav-item @if(request()->routeIs('contactus.index') || request()->routeIs('contactus.archive')) active @endif">
-        <a class="search " href="{{route('contactus.index')}}">
+        <a class="search" href="{{route('contactus.index')}}">
               <span class="icon">
                 <i class="fa-solid fa-message"></i>
               </span>
-            <span class="text">الشكاوي</span>
+            <span class="text">الرسائل</span>
         </a>
     </li>
    

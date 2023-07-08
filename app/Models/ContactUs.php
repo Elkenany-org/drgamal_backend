@@ -12,12 +12,9 @@ class ContactUs extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'company_name',
-        'first_name',
-        'second_name',
+        'name',
         'email',
-        'phone',
-        'message',
+        'message'
     ];
     protected $dates = ['deleted_at'];
 }

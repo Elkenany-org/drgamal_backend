@@ -16,16 +16,22 @@ class ImageController extends Controller
 
     public function create()
     {
-        $image = Image::where('type','الدكتور')->first();
-        $image1 = Image::where('type','الشركة الرئيسية')->first();
-        if($image == null && $image1 == null)
-            $types = ['--لا شئ--' , 'الدكتور' , 'الشركة الرئيسية' , 'شركة فرعية'];
-        if($image == null && $image1 != null)
-            $types = ['--لا شئ--' , 'الدكتور' , 'شركة فرعية'];
-        if($image != null && $image1 == null)
-            $types = ['--لا شئ--' , 'الشركة الرئيسية' , 'شركة فرعية'];
-        if($image != null && $image1 != null)
-            $types = ['شركة فرعية'];
+        $types = array('--لا شئ--');
+        
+        $image1 = Image::where('type','الدكتور')->first();
+        $image2 = Image::where('type','الشركة الرئيسية')->first();
+        $image3 = Image::where('type','الانجازات')->first();
+        $image4 = Image::where('type','الاخبار')->first();
+        if($image1 == null)
+            array_push($types , 'الدكتور');
+        if($image2 == null)
+            array_push($types , 'الشركة الرئيسية');
+        if($image3 == null)
+            array_push($types , 'الانجازات');
+        if($image4 == null)
+            array_push($types , 'الاخبار');
+            
+        array_push($types , 'شركة فرعية');
         return view('Images.create',compact('types'));
     }
 
