@@ -28,13 +28,6 @@ return new class extends Migration
             $table->string('meta_link')->nullable();
             $table->longtext('meta_description')->nullable();
 
-            $table->unsignedBigInteger('category_id')->nullable(false);
-            $table->foreign('category_id')
-                ->references('id')
-                ->on('categories')
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
-
             $table->softDeletes();
             $table->timestamps();
         });

@@ -26,7 +26,6 @@
               <th scope="col" style="width: 5rem;">#</th>
               <th scope="col" style="width: 8rem;">الصورة</th>
               <th scope="col">العنوان</th>
-              <th scope="col">القسم</th>
               <th scope="col">تاريخ الانشاء</th>
               <th scope="col">تاريخ التعديل</th>
               <th scope="col">تاريخ الحذف</th>
@@ -42,7 +41,6 @@
             <th scope="row" style="color: #2f80ed ">{{$counter++}}</th>
             <td><img src="/images/main/news/{{$event->image}}" alt="error" style="width: 60px"></td>
             <td style="max-width:  11rem;word-wrap: break-word;padding-left: 40px;"><p class=" title" style=" overflow-wrap: break-word">{{$event->title}}</p></td>
-            <td style="max-width:  11rem;word-wrap: break-word;padding-left: 40px;"><p class=" title" style=" overflow-wrap: break-word; padding-left: 30px;">{{$event->category->name_ar}}</p></td>
             <td style="max-width:  7rem;word-wrap: break-word;padding-left: 40px;"><p class=" title" style=" overflow-wrap: break-word">{{($event->created_at)->format('d/m/Y   h:i:s')}}</p></td>
             <td style="max-width:  7rem;word-wrap: break-word;padding-left: 40px;"><p class=" title" style=" overflow-wrap: break-word">{{($event->updated_at)->format('d/m/Y   h:i:s')}}</p></td>
             <td style="max-width:  7rem;word-wrap: break-word;padding-left: 40px;"><p class=" title" style=" overflow-wrap: break-word">{{($event->deleted_at)->format('d/m/Y   h:i:s')}}</p></td>

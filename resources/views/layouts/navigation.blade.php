@@ -9,7 +9,7 @@
             <span class="text">عن دكتور جمال</span>
         </a>
     </li>
-    <li class=" nav-item @if(request()->routeIs('Companies.index')) || request()->routeIs('Companies.create'))  active @else noneactive @endif nav-item-has-children">
+    <li class=" nav-item @if(request()->routeIs('Companies.index') || request()->routeIs('Companies.create'))  active @else noneactive @endif nav-item-has-children">
         <a class="search collapsed"  data-bs-toggle="collapse" data-bs-target="#ddmenu_1"
         aria-controls="ddmenu_1" aria-expanded="true" aria-label="Toggle navigation">
             <span class="icon">
@@ -33,7 +33,7 @@
         </ul>
     </li>
     
-    <li class=" nav-item @if(request()->routeIs('Images.index') || request()->routeIs('Images.create'))  active @else noneactive @endif nav-item-has-children">
+    <li class=" nav-item @if(request()->routeIs('images.index') || request()->routeIs('images.create'))  active @else noneactive @endif nav-item-has-children">
         <a class="search collapsed"  data-bs-toggle="collapse" data-bs-target="#ddmenu_2"
         aria-controls="ddmenu_2" aria-expanded="true" aria-label="Toggle navigation">
             <span class="icon">
@@ -56,7 +56,29 @@
             </li>
         </ul>
     </li>
-    
+    <li class=" nav-item @if(request()->routeIs('News.index') || request()->routeIs('News.create') || request()->routeIs('News.archive')) active @else noneactive @endif nav-item-has-children">
+        <a class="search collapsed"  data-bs-toggle="collapse" data-bs-target="#ddmenu_3"
+        aria-controls="ddmenu_3" aria-expanded="true" aria-label="Toggle navigation">
+            <span class="icon">
+                <i class="fa-solid fa-newspaper fa-sm"></i>
+            </span>
+            <span class="text">الاخبار</span>
+        </a>
+        <ul id="ddmenu_3" class="dropdown-nav collapse">
+            <li>
+                <a href="{{ route('News.index') }}">
+                    <div class="ico w-fit"><i class="fa-solid fa-eye m-0" style="font-size: 14px"></i></div>
+                    عرض
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('News.create') }}">
+                    <div class="ico w-fit"><i class="fa-solid fa-plus m-0" style="font-size: 14px"></i></div>
+                    اضافة
+                </a>
+            </li>
+        </ul>
+    </li>
     <li class=" nav-item @if(request()->routeIs('category.index') || request()->routeIs('category.archive')) active @else noneactive @endif nav-item-has-children">
             <a class="search collapsed"  class="" data-bs-toggle="collapse" data-bs-target="#ddmenu_4"
             aria-controls="ddmenu_4" aria-expanded="true" aria-label="Toggle navigation">

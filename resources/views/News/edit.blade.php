@@ -16,16 +16,7 @@
                   <div dir="ltr"><span id="1"></span></div>
                 </div>
               </div>
-              <div class="col-12">
-                <div class="input-style-1">
-                  <label for="category_id">القسم</label>
-                  <select name="category_id" class="form-control w-25">
-                    @foreach($categories as $category)
-                        <option value="{{ $category->id }}">{{ $category->name_ar }}</option>
-                    @endforeach
-                  </select>  
-                </div>
-              </div>
+              
               <div class="col-12">
                 <div class="input-style-1">
                   <label for="description">الوصف</label>

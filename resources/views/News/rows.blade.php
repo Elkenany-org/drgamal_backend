@@ -7,7 +7,6 @@ $counter =1;
     <td><img src="/images/main/news/{{$event->image}}" alt="error" style="width: 60px"></td>
     @if ($search_flag == true && $search_flag2 == true)
         <td style="max-width:  11rem;word-wrap: break-word;padding-left: 40px;"><p style=" overflow-wrap: break-word">{{$event->title}}</p></td>
-        <td style="max-width:  11rem;word-wrap: break-word;padding-left: 90px;"><p style=" overflow-wrap: break-word">{{$event->category->name_ar}}</p></td>
         <td style="max-width:  7rem;word-wrap: break-word;padding-left: 40px;"><p style=" overflow-wrap: break-word">{{($event->created_at)->format('d/m/Y   h:i:s')}}</p></td>
         <td style="max-width:  7rem;word-wrap: break-word;padding-left: 40px;"><p 
             style="overflow-wrap: break-word">{{($event->updated_at)->format('d/m/Y   h:i:s')}}</p>
@@ -21,7 +20,6 @@ $counter =1;
                 @endforeach
             </p>
         </td>
-        <td style="max-width:  11rem;word-wrap: break-word;padding-left: 90px;"><p style="overflow-wrap: break-word">{{$event->category->name_ar}}</p></td>
         <td style="max-width:  7rem;word-wrap: break-word;padding-left: 40px;"><p style="overflow-wrap: break-word">{{($event->created_at)->format('d/m/Y   h:i:s')}}</p></td>
     @endif
     <td>

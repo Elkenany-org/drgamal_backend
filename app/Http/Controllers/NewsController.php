@@ -29,15 +29,13 @@ class NewsController extends Controller
 
     public function create()
     {
-        $categories = Category::all();
-        return view('News.create',compact('categories'));
+        return view('News.create');
     }
     
     public function store(Request $request)
     {
         $this->validate($request , [
             'title'=> 'required',
-            'category_id'=> 'required',
             'image'=> 'required',
             'description'=> 'required',
         ]);
@@ -58,7 +56,6 @@ class NewsController extends Controller
         
         News::create([
             'title'=> $request->title,
-            'category_id'=> $request->category_id,
             'image'=> $image_name,
             'description'=> $request->description,
             'alt_text'=> $request->alt_text,
@@ -86,15 +83,13 @@ class NewsController extends Controller
     public function edit($id)
     {
         $event = News::where('id' , $id)->first();
-        $categories = Category::all();
-        return view('News.edit',compact('categories'))->with('event' , $event);
+        return view('News.edit')->with('event' , $event);
     }
     
     public function update(Request $request, $id)
     {
         $request->validate([
             'title' => 'required',
-            'category_id' => 'required',
             'description' => 'required'
         ]);
         $event = News::find($id);
@@ -115,7 +110,6 @@ class NewsController extends Controller
         
         
         $event->title = $request->title;
-        $event->category_id = $request->category_id;
         $event->description = $request->description;
         $event->focus_keyword = $request->focus_keyword;
         $event->alt_text = $request->alt_text;
@@ -167,9 +161,12 @@ class NewsController extends Controller
         $image_path = public_path('images/main/news/'.$event->image);
         if(File::exists($image_path)) 
             unlink($image_path);
-        $social_image_path = public_path('images/social/news/'.$event->social_image);
-        if(File::exists($social_image_path)) 
-            unlink($social_image_path);
+        if($event->social_image != null)
+        {
+            $social_image_path = public_path('images/social/news/'.$event->social_image);
+            if(File::exists($social_image_path)) 
+                unlink($social_image_path);
+        }
         
         $event->forceDelete();
         return redirect()->route('News.archive'); 
