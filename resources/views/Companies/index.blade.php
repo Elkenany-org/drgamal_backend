@@ -35,21 +35,3 @@
 
 </div>
 @endsection
-
-<link href="{{ asset('css/fullcalendar.min.css') }}" rel="stylesheet" />
-<script src="{{ asset('js/fullcalendar.min.js') }}"></script>
-<script src="{{ asset('js/daygrid.min.js') }}"></script>
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    var calendarEl = document.getElementById('calendar');
-
-    var calendar = new FullCalendar.Calendar(calendarEl, {
-      plugins: [ 'dayGrid' ],
-      events: [
-        // Add your calendar events here
-      ]
-    });
-
-    calendar.render();
-  });
-</script>

@@ -9,7 +9,7 @@
             <span class="text">عن دكتور جمال</span>
         </a>
     </li>
-    <li class=" nav-item @if(request()->routeIs('Companies.index') || request()->routeIs('Companies.create'))  active @else noneactive @endif nav-item-has-children">
+    <li class=" nav-item @if(request()->routeIs('companies.index') || request()->routeIs('companies.create'))  active @else noneactive @endif nav-item-has-children">
         <a class="search collapsed"  data-bs-toggle="collapse" data-bs-target="#ddmenu_1"
         aria-controls="ddmenu_1" aria-expanded="true" aria-label="Toggle navigation">
             <span class="icon">
