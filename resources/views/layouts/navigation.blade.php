@@ -79,23 +79,23 @@
             </li>
         </ul>
     </li>
-    <li class=" nav-item @if(request()->routeIs('category.index') || request()->routeIs('category.archive')) active @else noneactive @endif nav-item-has-children">
+    <li class=" nav-item @if(request()->routeIs('achievements.index') || request()->routeIs('achievements.create')) active @else noneactive @endif nav-item-has-children">
             <a class="search collapsed"  class="" data-bs-toggle="collapse" data-bs-target="#ddmenu_4"
             aria-controls="ddmenu_4" aria-expanded="true" aria-label="Toggle navigation">
             <span class="icon">
-                <i class="fa-solid fa-list"></i>
+                <i class="fa-solid fa-award"></i>
             </span>
-            <span class="text">اقسام الاخبار</span>
+            <span class="text">الشهادات</span>
         </a>
         <ul id="ddmenu_4" class="dropdown-nav collapse">
             <li>
-                <a href="{{ route('category.index') }}">
+                <a href="{{ route('achievements.index') }}">
                     <div class="ico w-fit"><i class="fa-solid fa-eye m-0" style="font-size: 14px"></i></div>
                     عرض
                 </a>
             </li>
             <li>
-                <a href="{{ route('category.create') }}">
+                <a href="{{ route('achievements.create') }}">
                     <div class="ico w-fit"><i class="fa-solid fa-plus m-0" style="font-size: 14px"></i></div>
                     اضافة
                 </a>
