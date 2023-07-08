@@ -64,19 +64,22 @@ class ImageController extends Controller
     {
         $image = Image::find($id)->first();
 
-        $image_path = public_path('images/home/'.$image->image);
-        if(File::exists($image_path))
-            unlink($image_path);
+        if($request->image != null)
+        {
+            $image_path = public_path('images/home/'.$image->image);
+            if(File::exists($image_path))
+                unlink($image_path);
+    
+            $image_name = $request->image->getClientOriginalName();
+            $image_name = time().$image_name;
+            $path = 'images/home';
+            $request->image->move($path , $image_name);
+            
+            $image->image = $image_name;
+            $image->save();
+        }
 
-        $image_name = $request->image->getClientOriginalName();
-        $image_name = time().$image_name;
-        $path = 'images/home';
-        $request->image->move($path , $image_name);
-        
-        $image->image = $image_name;
-        $image->save();
-
-        return redirect()->route('Images.index');
+        return redirect()->route('images.index');
     }
 
     public function destroy($id)

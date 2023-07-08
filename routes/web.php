@@ -53,12 +53,12 @@ Route::prefix('about')->group(function () {
 });
 
 //Home Images
-Route::prefix('images')->group(function () {
+Route::prefix('image')->group(function () {
     Route::get('/' , [ImageController::class,'index'])->name('images.index');
     Route::get('create' , [ImageController::class, 'create'])->name('images.create');
     Route::post('/store' , [ImageController::class,'store'])->name('images.store');
     Route::get('/edit/{id}' , [ImageController::class,'edit'])->name('images.edit');
-    Route::put('/update/{id}' , [ImageController::class,'update'])->name('images.update');
+    Route::post('/update/{id}' , [ImageController::class,'update'])->name('images.update');
     Route::get('/delete/{id}' , [ImageController::class,'destroy'])->name('images.delete');
 });
 
