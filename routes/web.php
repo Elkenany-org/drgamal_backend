@@ -9,6 +9,7 @@ use App\Http\Controllers\JobController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\ImageController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileController;
@@ -50,6 +51,17 @@ Route::prefix('about')->group(function () {
     Route::get('/edit' , [AboutController::class,'edit'])->name('About.edit');
     Route::post('/update' , [AboutController::class,'update'])->name('About.update');
 });
+
+//Home Images
+Route::prefix('images')->group(function () {
+    Route::get('/' , [ImageController::class,'index'])->name('images.index');
+    Route::get('create' , [ImageController::class, 'create'])->name('images.create');
+    Route::post('/store' , [ImageController::class,'store'])->name('images.store');
+    Route::get('/edit/{id}' , [ImageController::class,'edit'])->name('images.edit');
+    Route::put('/update/{id}' , [ImageController::class,'update'])->name('images.update');
+    Route::get('/delete/{id}' , [ImageController::class,'destroy'])->name('images.delete');
+});
+
 
 //info
 Route::prefix('info')->group(function () {

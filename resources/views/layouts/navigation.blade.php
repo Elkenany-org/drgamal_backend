@@ -10,14 +10,14 @@
         </a>
     </li>
     <li class=" nav-item @if(request()->routeIs('Companies.index')) || request()->routeIs('Companies.create'))  active @else noneactive @endif nav-item-has-children">
-        <a class="search collapsed"  data-bs-toggle="collapse" data-bs-target="#ddmenu_2"
-        aria-controls="ddmenu_2" aria-expanded="true" aria-label="Toggle navigation">
+        <a class="search collapsed"  data-bs-toggle="collapse" data-bs-target="#ddmenu_1"
+        aria-controls="ddmenu_1" aria-expanded="true" aria-label="Toggle navigation">
             <span class="icon">
                 <i class="fa-solid fa-building"></i>
             </span>
             <span class="text">الشركات</span>
         </a>
-        <ul id="ddmenu_2" class="dropdown-nav collapse">
+        <ul id="ddmenu_1" class="dropdown-nav collapse">
             <li>
                 <a href="{{ route('companies.index') }}">
                     <div class="ico w-fit"><i class="fa-solid fa-eye m-0" style="font-size: 14px"></i></div>
@@ -26,6 +26,30 @@
             </li>
             <li>
                 <a href="{{ route('companies.create') }}">
+                    <div class="ico w-fit"><i class="fa-solid fa-plus m-0" style="font-size: 14px"></i></div>
+                    اضافة
+                </a>
+            </li>
+        </ul>
+    </li>
+    
+    <li class=" nav-item @if(request()->routeIs('Images.index') || request()->routeIs('Images.create'))  active @else noneactive @endif nav-item-has-children">
+        <a class="search collapsed"  data-bs-toggle="collapse" data-bs-target="#ddmenu_2"
+        aria-controls="ddmenu_2" aria-expanded="true" aria-label="Toggle navigation">
+            <span class="icon">
+                <i class="fa-solid fa-image"></i>
+            </span>
+            <span class="text">الصور و اللوجوهات</span>
+        </a>
+        <ul id="ddmenu_2" class="dropdown-nav collapse">
+            <li>
+                <a href="{{ route('images.index') }}">
+                    <div class="ico w-fit"><i class="fa-solid fa-eye m-0" style="font-size: 14px"></i></div>
+                    عرض
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('images.create') }}">
                     <div class="ico w-fit"><i class="fa-solid fa-plus m-0" style="font-size: 14px"></i></div>
                     اضافة
                 </a>
