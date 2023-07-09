@@ -103,47 +103,23 @@
         </ul>
     </li>
     
-    {{-- <li class=" nav-item @if(request()->routeIs('Articles.index') || request()->routeIs('Articles.archive')) active @else noneactive @endif nav-item-has-children">
-        <a class="search collapsed" class="" data-bs-toggle="collapse" data-bs-target="#ddmenu_10"
-           aria-controls="ddmenu_10" aria-expanded="true" aria-label="Toggle navigation">
+    <li class=" nav-item @if(request()->routeIs('metadata.index') || request()->routeIs('metadata.create')) active @else noneactive @endif nav-item-has-children">
+        <a class="search collapsed" class="" data-bs-toggle="collapse" data-bs-target="#ddmenu_5"
+           aria-controls="ddmenu_5" aria-expanded="true" aria-label="Toggle navigation">
             <span class="icon">
-                <i class="fa-solid fa-newspaper"></i>
+                <i class="fa-solid fa-link"></i>
             </span>
-            <span class="text">المقالات</span>
+            <span class="text">meta data</span>
         </a>
-        <ul id="ddmenu_10" class="dropdown-nav collapse" style="">
+        <ul id="ddmenu_5" class="dropdown-nav collapse" style="">
             <li>
-                <a href="{{route('Articles.index')}}">
+                <a href="{{route('metadata.index')}}">
                     <div class="ico w-fit"><i class="fa-solid fa-eye m-0" style="font-size: 14px"></i></div>
-                    عرض
+                    show
                 </a>
-                <a href="{{route('Articles.create')}}">
+                <a href="{{route('metadata.create')}}">
                     <div class="ico w-fit"><i class="fa-solid fa-plus m-0" style="font-size: 14px"></i></div>
-                    اضافة
-                </a>
-            </li>
-            <li>
-            </li>
-        </ul>
-    </li> --}}
-        
-    <li class=" nav-item @if(request()->routeIs('Jobs.index') || request()->routeIs('Jobs.archive')) active @else noneactive @endif nav-item-has-children">
-        <a class="search collapsed" class="" data-bs-toggle="collapse" data-bs-target="#ddmenu_3"
-           aria-controls="ddmenu_3" aria-expanded="true" aria-label="Toggle navigation">
-            <span class="icon">
-                <i class="fa-solid fa-briefcase"></i>
-            </span>
-            <span class="text">الوظائف</span>
-        </a>
-        <ul id="ddmenu_3" class="dropdown-nav collapse" style="">
-            <li>
-                <a href="{{route('Jobs.index')}}">
-                    <div class="ico w-fit"><i class="fa-solid fa-eye m-0" style="font-size: 14px"></i></div>
-                    عرض
-                </a>
-                <a href="{{route('Jobs.create')}}">
-                    <div class="ico w-fit"><i class="fa-solid fa-plus m-0" style="font-size: 14px"></i></div>
-                    اضافة
+                    add
                 </a>
             </li>
             <li>
@@ -151,29 +127,6 @@
         </ul>
     </li>
     
-    <li class=" nav-item @if(request()->routeIs('info.index') || request()->routeIs('info.archive')) active @else noneactive @endif nav-item-has-children">
-        <a class="search collapsed"  data-bs-toggle="collapse" data-bs-target="#ddmenu_5"
-        aria-controls="ddmenu_5" aria-expanded="true" aria-label="Toggle navigation">
-            <span class="icon">
-                <i class="fa-solid fa-circle-info"></i>
-            </span>
-            <span class="text">البيانات</span>
-        </a>
-        <ul id="ddmenu_5" class="dropdown-nav collapse">
-            <li>
-                <a href="{{ route('info.index') }}">
-                    <div class="ico w-fit"><i class="fa-solid fa-eye m-0" style="font-size: 14px"></i></div>
-                    عرض
-                </a>
-            </li>
-            <li>
-                <a href="{{ route('info.create') }}">
-                    <div class="ico w-fit"><i class="fa-solid fa-plus m-0" style="font-size: 14px"></i></div>
-                    اضافة
-                </a>
-            </li>
-        </ul>
-    </li>
 
 
     <li class="nav-item @if(request()->routeIs('contactus.index') || request()->routeIs('contactus.archive')) active @endif">

@@ -10,6 +10,7 @@ use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ImageController;
+use App\Http\Controllers\MetaDataPagesController;
 use App\Http\Controllers\AchievementController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\UserController;
@@ -119,7 +120,16 @@ Route::prefix('contactus')->group(function () {
     Route::get('/delete/{id}' , [ContactUsController::class,'hard_delete'])->name('contactus.hard_delete');
     Route::get('/search' , [ContactUsController::class,'search'])->name('contactus.search');
     Route::get('/archive_search' , [ContactUsController::class,'archive_search'])->name('contactus.archive_search');
-    
+});
+
+//meta data
+Route::prefix('metadata')->group(function () {
+    Route::get('/' , [MetaDataPagesController::class,'index'])->name('metadata.index');
+    Route::get('/create' , [MetaDataPagesController::class, 'create'])->name('metadata.create');
+    Route::post('/store' , [MetaDataPagesController::class, 'store'])->name('metadata.store');
+    Route::get('/edit/{id}' , [MetaDataPagesController::class,'edit'])->name('metadata.edit');
+    Route::post('/update/{id}' , [MetaDataPagesController::class,'update'])->name('metadata.update');
+    Route::get('/delete/{id}' , [MetaDataPagesController::class,'delete'])->name('metadata.delete');
 });
 
 

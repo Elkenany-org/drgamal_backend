@@ -10,73 +10,59 @@ class MetaDataPagesController extends Controller
     
     public function index()
     {
-        $Meta_data = Meta_data_pages::all();
-        
+        $Meta_data = Meta_data_pages::paginate(10);
+        return view('MetaData.index',compact('Meta_data'));
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function create()
     {
-        //
+        return view('MetaData.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'meta_title'=>'required',
+            'meta_link'=>'required',
+            'meta_description'=>'required'
+        ]);
+        Meta_data_pages::create([
+            'title'=> $request->meta_title,
+            'link'=> $request->meta_link,
+            'description'=> $request->meta_decription
+        ]);
+        return redirect()->route('metadata.index');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Meta_data_pages  $meta_data_pages
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Meta_data_pages $meta_data_pages)
+   
+    public function edit($id)
     {
-        //
+        $metadata = Meta_data_pages::where('id' , $id)->first();
+        return view('MetaData.edit',compact('metadata'));
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Meta_data_pages  $meta_data_pages
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Meta_data_pages $meta_data_pages)
+    
+    public function update(Request $request,$id)
     {
-        //
+        $request->validate([
+            'meta_title'=>'required',
+            'meta_link'=>'required',
+            'meta_description'=>'required'
+        ]);
+        $metadata = Meta_data_pages::find($id);
+        
+        $metadata->title = $request->meta_title;
+        $metadata->link = $request->meta_link;
+        $metadata->description = $request->meta_description;
+        
+        $metadata->save();
+        
+        return redirect()->route('metadata.index');
     }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Meta_data_pages  $meta_data_pages
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Meta_data_pages $meta_data_pages)
+    
+    public function delete($id)
     {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Meta_data_pages  $meta_data_pages
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Meta_data_pages $meta_data_pages)
-    {
-        //
+        $metadata = Meta_data_pages::where('id' , $id)->first();
+        $metadata->delete();
+        return redirect()->back(); 
     }
 }
