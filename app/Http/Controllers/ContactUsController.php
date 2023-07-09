@@ -10,7 +10,12 @@ class ContactUsController extends Controller
     
     public function index()
     {
-        $all_messages = ContactUs::latest()->paginate(10);
+        $all_messages = ContactUs::where('read',0)->latest()->paginate(10);
+        return view('ContactUs.index')->with('all_messages' , $all_messages);
+    }
+    public function index_read()
+    {
+        $all_messages = ContactUs::where('read',1)->latest()->paginate(10);
         return view('ContactUs.index')->with('all_messages' , $all_messages);
     }
 

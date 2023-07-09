@@ -126,28 +126,50 @@
             </li>
         </ul>
     </li>
-    
+    <li class=" nav-item @if(request()->routeIs('contactus.unread') || request()->routeIs('contactus.read')) active @else noneactive @endif nav-item-has-children">
+        <a class="search collapsed" class="" data-bs-toggle="collapse" data-bs-target="#ddmenu_6"
+           aria-controls="ddmenu_6" aria-expanded="true" aria-label="Toggle navigation">
+            <span class="icon">
+                <i class="fa-solid fa-message"></i>
+            </span>
+            <span class="text">الرسائل</span>
+        </a>
+        <ul id="ddmenu_6" class="dropdown-nav collapse" style="">
+            <li>
+                <a href="{{route('contactus.unread')}}">
+                    <div class="ico w-fit"><i class="fa-solid fa-eye-slash m-0" style="font-size: 14px"></i></div>
+                    الرسائل الغير المقروءة
+                </a>
+                <a href="{{route('contactus.read')}}">
+                    <div class="ico w-fit"><i class="fa-solid fa-eye m-0" style="font-size: 14px"></i></div>
+                    الرسائل المقروءة
+                </a>
+            </li>
+            <li>
+            </li>
+        </ul>
+    </li>
 
 
-    <li class="nav-item @if(request()->routeIs('contactus.index') || request()->routeIs('contactus.archive')) active @endif">
+    {{-- <li class="nav-item @if(request()->routeIs('contactus.index') || request()->routeIs('contactus.archive')) active @endif">
         <a class="search" href="{{route('contactus.index')}}">
               <span class="icon">
                 <i class="fa-solid fa-message"></i>
               </span>
             <span class="text">الرسائل</span>
         </a>
-    </li>
+    </li> --}}
    
     @if (Auth::check() && Auth::user()->role == 'admin')
     <li class=" nav-item @if(request()->routeIs('users.index') || request()->routeIs('register_form')) active @else noneactive @endif nav-item-has-children">
-        <a class="search collapsed"  data-bs-toggle="collapse" data-bs-target="#ddmenu_6"
-        aria-controls="ddmenu_6" aria-expanded="true" aria-label="Toggle navigation">
+        <a class="search collapsed"  data-bs-toggle="collapse" data-bs-target="#ddmenu_7"
+        aria-controls="ddmenu_7" aria-expanded="true" aria-label="Toggle navigation">
             <span class="icon">
                 <i class="fa-solid fa-circle-info"></i>
             </span>
             <span class="text">المستخدمين</span>
         </a>
-        <ul id="ddmenu_6" class="dropdown-nav collapse">
+        <ul id="ddmenu_7" class="dropdown-nav collapse">
             <li>
                 <a href="{{ route('users.index') }}">
                     <div class="ico w-fit"><i class="fa-solid fa-eye m-0" style="font-size: 14px"></i></div>

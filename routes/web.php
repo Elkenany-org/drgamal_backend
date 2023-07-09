@@ -112,7 +112,8 @@ Route::prefix('info')->group(function () {
 
 //contactus
 Route::prefix('contactus')->group(function () {
-    Route::get('/' , [ContactUsController::class,'index'])->name('contactus.index');
+    Route::get('/' , [ContactUsController::class,'index'])->name('contactus.unread');
+    Route::get('/read' , [ContactUsController::class,'index_read'])->name('contactus.read');
     Route::get('/archive' , [ContactUsController::class,'archive'])->name('contactus.archive');
     Route::get('/show/{id}' , [ContactUsController::class,'show'])->name('contactus.show');
     Route::get('/destroy/{id}' , [ContactUsController::class,'soft_delete'])->name('contactus.soft_delete');
