@@ -13,27 +13,19 @@ class ApiNewsController extends Controller
 {
     public function index()
     {
-        $news = News::with(['category' => function ($query) {
-            $query->select('id','name_ar','name_en');
-        }])
-        ->get();
+        $news = News::latest()->paginate(10);
         return response()->json($news, 200);
     }
 
     public function show($id)
     {
-        $event = News::where('id' , $id)
-            ->with(['category' => function ($query) {
-            $query->select('id','name_ar','name_en');
-        }])
-        ->get();
+        $event = News::where('id' , $id)->first();
         return response()->json($event, 200);
     }
 
     public function search(Request $request)
     {
-        $event = News::where('title', 'LIKE', "%{$request->title}%")->first();
-        return response()->json($event, 200);
+        $result = $this->description_search($request , 'description' , new News() , 'News' , 'news',false,'index',true);
+        return response()->json($result,200);
     }
-
 }

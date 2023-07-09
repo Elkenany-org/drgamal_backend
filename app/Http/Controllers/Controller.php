@@ -12,10 +12,10 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    public function description_search($request , $column , $Model , $view , $return_data_name , $archive_flag , $page)
+    public function description_search($request , $column , $Model , $view , $return_data_name , $archive_flag , $page , $api_flag = false)
     {
         $description = $request->$column;
-    
+
         if($description == "")
             return redirect()->route($view.'.'.$page)->with('search_flag',true)->with('search_flag2',false);
         
@@ -96,11 +96,15 @@ class Controller extends BaseController
                 ->paginate(10);
         }
 
-        if($column == 'title')
+        if($column == 'title' && $api_flag == false)
         {
             return view($view.'.'.$page)->with($return_data_name ,$ret_data)->with('search_flag',true)
                 ->with('search_flag2' , true)
                 ->with('indecies_of_words',$indecies_of_words);
+        }
+        else if($api_flag == true)
+        {
+            return $ret_data;
         }
         return view($view.'.'.$page)->with($return_data_name ,$ret_data)->with('search_flag',true)
             ->with('search_flag2' , false)

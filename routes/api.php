@@ -4,9 +4,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\ApiNewsController;
 use App\Http\Controllers\Api\ApiJobController;
-use App\Http\Controllers\Api\ApiCategoryController;
+use App\Http\Controllers\Api\ApiAboutController;
+use App\Http\Controllers\Api\ApiImageController;
 use App\Http\Controllers\Api\ApiContactUsController;
-use App\Http\Controllers\Api\ApiInfoController;
+use App\Http\Controllers\Api\ApiCompanyController;
 use App\Models\News;
 use App\Models\Job;
 use App\Models\Category;
@@ -45,19 +46,24 @@ Route::prefix('jobs')->group(function () {
 });
 
 
-//catgories
-Route::prefix('categories')->group(function () {
-    Route::get('/' , [ApiCategoryController::class,'index']);
-    Route::get('/show/{id}' , [ApiCategoryController::class,'show']);
-    Route::get('/search/{id}', [ApiCategoryController::class, 'show']);
+//about
+Route::prefix('about')->group(function () {
+    Route::get('/show' , [ApiAboutController::class,'show']);
+});
+
+//Images
+Route::prefix('image')->group(function () {
+    Route::get('/dr_image' , [ApiImageController::class,'dr_image']);
+    Route::get('/maincompany_image' , [ApiImageController::class,'maincompany_image']);
+    Route::get('/secondarycompanies_image' , [ApiImageController::class,'secondarycompanies_image']);
+    Route::get('/achievementspage_image' , [ApiImageController::class,'achievementspage_image']);
+    Route::get('/newspage_image' , [ApiImageController::class,'newspage_image']);
 });
 
 
 //infos
-Route::prefix('infos')->group(function () {
-    Route::get('/' , [ApiInfoController::class,'index']);
-    Route::get('/show/{id}' , [ApiInfoController::class,'show']);
-    Route::get('/search/{id}', [ApiInfoController::class, 'show']);
+Route::prefix('companies')->group(function () {
+    Route::get('/' , [ApiCompanyController::class,'index']);
 });
 
 //contactus
