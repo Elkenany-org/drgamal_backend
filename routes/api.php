@@ -8,6 +8,7 @@ use App\Http\Controllers\Api\ApiAboutController;
 use App\Http\Controllers\Api\ApiImageController;
 use App\Http\Controllers\Api\ApiContactUsController;
 use App\Http\Controllers\Api\ApiCompanyController;
+use App\Http\Controllers\Api\ApiHomeController;
 use App\Models\News;
 use App\Models\Job;
 use App\Models\Category;
@@ -68,3 +69,6 @@ Route::prefix('companies')->group(function () {
 
 //contactus
 Route::post('contactus/store' , [ApiContactUsController::class,'store']);
+
+//home
+Route::get('home/all' , [ApiHomeController::class,'home']);

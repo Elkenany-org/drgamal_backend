@@ -13,8 +13,15 @@ class ApiNewsController extends Controller
 {
     public function index()
     {
-        $news = News::latest()->paginate(10);
+        $news = News::latest()->paginate();
         return response()->json($news, 200);
+        $ret = [];
+        foreach($news as $event)
+        {
+            return response()->json($event, 200);
+            array_push($ret , $event['data']);
+        }
+        return response()->json($ret, 200);
     }
 
     public function show($id)

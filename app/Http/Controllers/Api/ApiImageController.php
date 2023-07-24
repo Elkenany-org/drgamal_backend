@@ -25,7 +25,8 @@ class ApiImageController extends Controller
     {
         $image = Image::where('type' , 'الانجازات')->first();
         $path = '/images/home/';
-        return response()->json($path.$image->image, 200);
+
+        return response()->json(url('/').$path.$image->image, 200);
     }
     public function newspage_image()
     {
