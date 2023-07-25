@@ -122,8 +122,6 @@
                     add
                 </a>
             </li>
-            <li>
-            </li>
         </ul>
     </li>
     <li class=" nav-item @if(request()->routeIs('contactus.unread') || request()->routeIs('contactus.read')) active @else noneactive @endif nav-item-has-children">
