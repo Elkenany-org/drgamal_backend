@@ -13,19 +13,26 @@ class ApiHomeController extends Controller
 {
     public function home()
     {
-        $image = Image::where('type' , 'الدكتور')->first();
-        $path = '/images/home/';
-        // $image = url('/').$path.$image->image;
-        
-        $path = '/images/home/';
+        $images=Image::all();
+
+        foreach($images as $img){
+            if($img->type == "الدكتور"){
+                $list['data']['images']['doctor']=$img;
+            }else if($img->type == "الشركة الرئيسية"){
+                $list['data']['images']['main_company']=$img;
+            }else if($img->type == "شركة فرعية"){
+                $list['data']['images']['sub_company'][]=$img;
+            }
+        }
         $about = About::where('id' , 1)->first();
+        $list['data']['about'] = $about;
+
+
+        $companies = Company::all();
+        $list['data']['founder_of'] = $companies;
         
-        $companies = Company::all(
-            
-        );
-        return response()->json($image->image_url, 200);
-        // return response()->json($companies, 200);
-        // return response()->json($image->getImageLink($path), 200);
+        
+        return response()->json($list['data'], 200);
         
         $logos = Image::where('type' , 'الشركة الرئيسية')->orWhere('type' , 'شركة فرعية')->get(); 
 
@@ -36,7 +43,6 @@ class ApiHomeController extends Controller
             'logos' => $logos
         ];
         
-        return response()->json($ret, 200);
         return response()->json($ret, 200);
     }
 }

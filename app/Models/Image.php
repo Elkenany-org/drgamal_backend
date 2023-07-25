@@ -16,6 +16,6 @@ class Image extends Model
 
     public function getImageUrlAttribute()
     {  
-        return url('/').$this->image;
+        return url('/').'/'.$this->image;
     }
 }

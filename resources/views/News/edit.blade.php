@@ -27,6 +27,14 @@
               
               <div class="col-12">
                 <div class="input-style-1">
+                  <label for="shortdescription">وصف مختصر</label>
+                  <textarea name="shortdescription" id="textarea2" oninput="countCharacters(this,2)">{{$event->shortdescription}}</textarea>
+                  <div dir="ltr"><span id="12"></span></div>
+                </div>
+              </div>
+
+              <div class="col-12">
+                <div class="input-style-1">
                   <label for="name">الصورة</label>
                   <img src="/images/main/news/{{$event->image}}" alt="error" style="width: 200px">
                   <input type="file" class="file" id="file" name="image">

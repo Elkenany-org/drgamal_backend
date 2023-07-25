@@ -26,13 +26,13 @@
             @foreach ($images as $image)
             <tr style="border-bottom: 1px double #5d657b">
               <th scope="row" style="color: #2f80ed">{{$counter++}}</th>
-              <td><img src="/images/home/{{$image->image}}" alt="error" style="width: 60px"></td>
+              <td><img src="{{$image->image}}" alt="error" style="width: 60px"></td>
               <td style="max-width:  7rem;word-wrap: break-word;padding-left: 40px;"><p class=" title" style=" overflow-wrap: break-word">{{$image->type}}</p></td>
               <td style="word-wrap: break-word;"><p class=" title" style=" overflow-wrap: break-word; max-width:  7rem;">{{($image->created_at)->format('d/m/Y   h:i:s')}}</p></td>
               <td style="word-wrap: break-word;"><p class=" title" style=" overflow-wrap: break-word; max-width:  7rem;">{{($image->updated_at)->format('d/m/Y   h:i:s')}}</p></td>
 
               <td>
-                <a class="btn btn-secondary ms-1 py-1" href="{{ route('images.edit', $image->id) }}">تغيير</a> 
+                <a class="btn btn-secondary ms-1 py-1" href="{{ route('images.edit', $image->id) }}">تغيير</a>
                 <a class="btn btn-danger ms-1 py-1" href="{{ route('images.delete', $image->id) }}">حذف</a>  
               </td>
             </tr>

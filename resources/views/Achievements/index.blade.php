@@ -32,7 +32,7 @@
             @foreach ($achievements as $achievement)
             <tr style="border-bottom: 1px double #5d657b">
               <th scope="row" style="color: #2f80ed">{{$counter++}}</th>
-              <td><img src="/images/achievements/{{$achievement->image}}" alt="error" style="width: 60px"></td>
+              <td><img src="{{$achievement->image}}" alt="error" style="width: 60px"></td>
               <td style="max-width:  7rem;"><p class=" title" 
                 style="overflow: hidden;display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; white-space: pre-wrap; padding-left: 45px;">
                 {{$achievement->description}}</p>

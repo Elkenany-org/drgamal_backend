@@ -33,7 +33,7 @@ class AchievementController extends Controller
         
         Achievement::create([
             'description' => $request->description,
-            'image'=> $image_name
+            'image'=> $path.'/'.$image_name
         ]);
     
         return redirect()->route('achievements.index');
@@ -41,13 +41,13 @@ class AchievementController extends Controller
 
     public function edit($id)
     {
-        $achievement = Achievement::find($id)->first();
+        $achievement = Achievement::find($id);
         return view('Achievements.edit',compact('achievement'));
     }
 
     public function update(Request $request, $id)
     {
-        $achievement = Achievement::find($id)->first();
+        $achievement = Achievement::find($id);
 
         if($request->image != null)
         {
@@ -60,7 +60,7 @@ class AchievementController extends Controller
             $path = 'images/achievements';
             $request->image->move($path , $image_name);
             
-            $achievement->image = $image_name;
+            $achievement->image = $path.'/'.$image_name;
         }
         $achievement->description = $request->description;
         $achievement->save();
@@ -70,7 +70,7 @@ class AchievementController extends Controller
 
     public function delete($id)
     {
-        $achievement = Achievement::find($id)->first();
+        $achievement = Achievement::find($id);
 
         $image_path = public_path('images/achievements/'.$achievement->image);
         if(File::exists($image_path))

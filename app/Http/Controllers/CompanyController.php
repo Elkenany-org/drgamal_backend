@@ -36,7 +36,7 @@ class CompanyController extends Controller
             'title'=> $request->title,
             'description'=> $request->description,
             'year'=> $request->year,
-            'image'=> $image_name,
+            'image'=> $path.'/'.$image_name,
         ]);
         return redirect()->route('companies.index');
     }
@@ -44,7 +44,7 @@ class CompanyController extends Controller
     
     public function edit($id)
     {
-        $company = Company::find($id)->first();
+        $company = Company::find($id);
         return view('Companies.edit',compact('company'));
     }
 
@@ -68,7 +68,7 @@ class CompanyController extends Controller
             $path = 'images/companies';
             $request->image->move($path , $image_name);
             
-            $company->image = $image_name;
+            $company->image = $path.'/'.$image_name;
         }
 
         $company->title = $request->title;

@@ -38,6 +38,7 @@ class NewsController extends Controller
             'title'=> 'required',
             'image'=> 'required',
             'description'=> 'required',
+            'shortdescription'=> 'required'
         ]);
         $image_name = $request->image->getClientOriginalName();
         $image_name = time().$image_name;
@@ -56,8 +57,9 @@ class NewsController extends Controller
         
         News::create([
             'title'=> $request->title,
-            'image'=> $image_name,
+            'image'=> $path.'/'.$image_name,
             'description'=> $request->description,
+            'shortdescription'=>$request->shortdescription,
             'alt_text'=> $request->alt_text,
             'focus_keyword'=> $request->focus_keyword,
 
@@ -90,7 +92,8 @@ class NewsController extends Controller
     {
         $request->validate([
             'title' => 'required',
-            'description' => 'required'
+            'description' => 'required',
+            'shortdescription'=>'required'
         ]);
         $event = News::find($id);
         
@@ -105,12 +108,13 @@ class NewsController extends Controller
             $path = 'images/main/news';
             $request->image->move($path , $image_name);
             
-            $event->image = $image_name;
+            $event->image = $path.'/'.$image_name;
         }
         
         
         $event->title = $request->title;
         $event->description = $request->description;
+        $event->shortdescription = $request->shortdescription;
         $event->focus_keyword = $request->focus_keyword;
         $event->alt_text = $request->alt_text;
         

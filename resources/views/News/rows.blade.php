@@ -4,7 +4,7 @@ $counter =1;
 @foreach ($news as $event)
 <tr style="border-bottom: 1px double #5d657b">
     <th scope="row" style="color: #2f80ed">{{$counter++}}</th>
-    <td><img src="/images/main/news/{{$event->image}}" alt="error" style="width: 60px"></td>
+    <td><img src="{{$event->image}}" alt="error" style="width: 60px"></td>
     @if ($search_flag == true && $search_flag2 == true)
         <td style="max-width:  11rem;word-wrap: break-word;padding-left: 40px;"><p style=" overflow-wrap: break-word">{{$event->title}}</p></td>
         <td style="width:15%;max-width:  7rem;word-wrap: break-word;padding-left: 40px;"><p style=" overflow-wrap: break-word">{{($event->created_at)->format('d/m/Y   h:i:s')}}</p></td>

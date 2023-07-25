@@ -9,6 +9,8 @@ use App\Http\Controllers\Api\ApiImageController;
 use App\Http\Controllers\Api\ApiContactUsController;
 use App\Http\Controllers\Api\ApiCompanyController;
 use App\Http\Controllers\Api\ApiHomeController;
+use App\Http\Controllers\Api\ApiAchievementsController;
+
 use App\Models\News;
 use App\Models\Job;
 use App\Models\Category;
@@ -38,6 +40,11 @@ Route::prefix('news')->group(function () {
     Route::get('/search', [ApiNewsController::class, 'search']);
 });
 
+//Achievements
+Route::prefix('achievements')->group(function () {
+    Route::get('/' , [ApiAchievementsController::class,'index']);
+
+});
 
 //jobs
 Route::prefix('jobs')->group(function () {

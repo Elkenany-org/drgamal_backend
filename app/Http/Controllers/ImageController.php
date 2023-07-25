@@ -54,7 +54,7 @@ class ImageController extends Controller
             
             Image::create([
                 'type' => $request->type,
-                'image'=> $image_name
+                'image'=> $path.'/'.$image_name
             ]);
         }
         return redirect()->route('images.index');
@@ -62,13 +62,14 @@ class ImageController extends Controller
 
     public function edit($id)
     {
-        $image = Image::find($id)->first();
+        // dd($id);
+        $image = Image::find($id);
         return view('Images.edit',compact('image'));
     }
 
     public function update(Request $request, $id)
     {
-        $image = Image::find($id)->first();
+        $image = Image::find($id);
 
         if($request->image != null)
         {
@@ -81,7 +82,7 @@ class ImageController extends Controller
             $path = 'images/home';
             $request->image->move($path , $image_name);
             
-            $image->image = $image_name;
+            $image->image = $path.'/'.$image_name;
             $image->save();
         }
 
@@ -90,7 +91,7 @@ class ImageController extends Controller
 
     public function destroy($id)
     {
-        $image = Image::find($id)->first();
+        $image = Image::find($id);
 
         $image_path = public_path('images/home/'.$image->image);
         if(File::exists($image_path))
