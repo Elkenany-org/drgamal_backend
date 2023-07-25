@@ -31,7 +31,7 @@
 <!-- ======== sidebar-nav end =========== -->
 
 <!-- ======== main-wrapper start =========== -->
-<main class="main-wrapper">
+<main class="main-wrapper" style="margin-right: 250px;margin-left:0px">
     <!-- ========== header start ========== -->
     <header class="header py-3 sticky-top">
         <div class="container-fluid">
