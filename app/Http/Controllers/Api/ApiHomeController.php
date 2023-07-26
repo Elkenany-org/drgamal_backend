@@ -33,16 +33,5 @@ class ApiHomeController extends Controller
         
         
         return response()->json($list['data'], 200);
-        
-        $logos = Image::where('type' , 'الشركة الرئيسية')->orWhere('type' , 'شركة فرعية')->get(); 
-
-        $ret = (object) [
-            'image' => $image,
-            'about' => $about,
-            'companies' => $companies,
-            'logos' => $logos
-        ];
-        
-        return response()->json($ret, 200);
     }
 }

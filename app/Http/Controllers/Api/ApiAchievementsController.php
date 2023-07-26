@@ -11,13 +11,7 @@ class ApiAchievementsController extends Controller
     public function index()
     {
         $achievements = Achievement::latest()->get();
-        return response()->json(['data'=>$achievements], 200);
-        $ret = [];
-        foreach($news as $event)
-        {
-            return response()->json($event, 200);
-            array_push($ret , $event['data']);
-        }
-        return response()->json($ret, 200);
+        $mainImage = Image::where('type','الاخبار')->get();
+        return response()->json(['data'=>$achievements,'mainImage'=>$mainImage], 200);
     }
 }
