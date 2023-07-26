@@ -12,6 +12,7 @@ class News extends Model
     use SoftDeletes;
     use HasFactory;
     protected $appends = ['image_url'];
+    protected $hidden = ['image'];
     protected $dates = ['deleted_at'];
     protected $fillable = ['title','image','description','alt_text','focus_keyword'
                             ,'social_title','social_link','social_image','social_description','social_alt_text'
@@ -22,4 +23,4 @@ class News extends Model
         return url('/').'/'.$this->image;
     }        
                         
-                        }
+}

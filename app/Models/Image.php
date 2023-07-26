@@ -9,9 +9,11 @@ class Image extends Model
 {
     use HasFactory;
     protected $appends=['image_url'];
+
+    protected $hidden=['image'];
+    
     protected $fillable = [
         'type',
-        'image'
     ];
 
     public function getImageUrlAttribute()
