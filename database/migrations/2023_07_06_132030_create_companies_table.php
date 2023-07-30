@@ -14,6 +14,9 @@ return new class extends Migration
             $table->longText('description');
             $table->unsignedBigInteger('year');
             $table->string('image');
+            $table->string('logo'); 
+            $table->string('link');
+
             $table->timestamps();
         });
     }

@@ -35,11 +35,21 @@
                         <div class="col-12">
                             <div class="input-style-1">
                                 <label for="name">الصورة</label>
-                                <img src="/images/home/{{$image->image}}" alt="error" style="width: 200px">
+                                <img src="{{$image->image_url}}" alt="error" style="width: 200px">
                                 <input type="file" class="file" id="file" name="image">
                             </div>
                         </div>
                         
+                        
+              <div class="col-12">
+                <div class="input-style-1">
+                  <label for="link">اللينك</label>
+                  <input type="text" class="form-control" name="link" id="link" value="{{$image->link}}" oninput="countCharacters(this,1)">
+                  <div dir="ltr"><span id="2"></span></div>
+                </div>
+              </div>
+              
+
                         <div class="col-12">
                             <div class="button-group d-flex justify-content-center flex-wrap">
                                 <input type="submit" value="تعديل" class="main-btn primary-btn btn-hover w-25 text-center">

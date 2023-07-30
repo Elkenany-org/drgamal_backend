@@ -13,6 +13,9 @@
             <tr style="color: #2f80ed">
               <th scope="col" style="width: 5rem;">#</th>
               <th scope="col" style="width: 8rem;">الصورة</th>
+              <th scope="col" style="width: 8rem;">اللوجو</th>
+              <th scope="col">اللينك</th>
+
               <th scope="col">السنة</th>
               <th scope="col">العنوان</th>
               <th scope="col">تاريخ الانشاء</th>

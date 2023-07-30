@@ -47,6 +47,15 @@
                         </div>
                       </div>
                     
+                    
+              <div class="col-12">
+                <div class="input-style-1">
+                  <label for="link">اللينك</label>
+                  <input type="text" class="form-control" name="link" id="link" oninput="countCharacters(this,1)">
+                  <div dir="ltr"><span id="2"></span></div>
+                </div>
+              </div>
+              
                     <div class="col-12">
                         <div class="button-group d-flex justify-content-center flex-wrap">
                             <input type="submit" value="اضافة" class="main-btn primary-btn btn-hover w-25 text-center">

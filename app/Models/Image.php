@@ -11,7 +11,7 @@ class Image extends Model
     protected $appends=['image_url'];
     protected $fillable = [
         'type',
-        'image'
+        'image','link'
     ];
 
     public function getImageUrlAttribute()
