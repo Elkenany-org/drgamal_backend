@@ -36,7 +36,7 @@
               <div class="col-12">
                 <div class="input-style-1">
                   <label for="name">الصورة</label>
-                  <img src="/images/main/news/{{$event->image}}" alt="error" style="width: 200px">
+                  <img src="{{$event->image_url}}" alt="error" style="width: 200px">
                   <input type="file" class="file" id="file" name="image">
                 </div>
               </div>

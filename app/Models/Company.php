@@ -8,17 +8,23 @@ use Illuminate\Database\Eloquent\Model;
 class Company extends Model
 {
     use HasFactory;
-    protected $appends=['image_url'];
+    protected $appends=['image_url','logo_url'];
 
     protected $fillable = [
         'title',
         'description',
         'year',
-        'image'
+        'image','logo','link'
     ];
 
     public function getImageUrlAttribute()
     {  
         return url('/').'/'.$this->image;
     }
+
+    public function getLogoUrlAttribute()
+    {  
+        return url('/').'/'.$this->logo;
+    }
+
 }

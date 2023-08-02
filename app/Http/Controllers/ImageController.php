@@ -52,10 +52,22 @@ class ImageController extends Controller
             $path = 'images/home';
             $request->image->move($path , $image_name);
             
-            Image::create([
-                'type' => $request->type,
-                'image'=> $path.'/'.$image_name
-            ]);
+
+            if($request->link){
+                Image::create([
+                    'type' => $request->type,
+                    'image'=> $path.'/'.$image_name,
+                    'link' => $request->link,
+
+                ]);         
+            
+            }else{
+                Image::create([
+                    'type' => $request->type,
+                    'image'=> $path.'/'.$image_name,
+                ]);         
+                
+            }
         }
         return redirect()->route('images.index');
     }
@@ -71,6 +83,9 @@ class ImageController extends Controller
     {
         $image = Image::find($id);
 
+        if($request->link){
+            $image->link=$request->link;
+        }
         if($request->image != null)
         {
             $image_path = public_path('images/home/'.$image->image);
@@ -83,9 +98,9 @@ class ImageController extends Controller
             $request->image->move($path , $image_name);
             
             $image->image = $path.'/'.$image_name;
-            $image->save();
+           
         }
-
+        $image->save();
         return redirect()->route('images.index');
     }
 

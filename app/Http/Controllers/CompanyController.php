@@ -26,18 +26,37 @@ class CompanyController extends Controller
             'description'=> 'required',
             'year'=> 'required',
             'image'=> 'required',
+            'logo'=> 'required',
         ]);
         $image_name = $request->image->getClientOriginalName();
         $image_name = time().$image_name;
         $path = 'images/companies';
         $request->image->move($path , $image_name);
 
-        Company::create([
-            'title'=> $request->title,
-            'description'=> $request->description,
-            'year'=> $request->year,
-            'image'=> $path.'/'.$image_name,
-        ]);
+        $logo_name = $request->logo->getClientOriginalName();
+        $logo_name = time().$logo_name;
+        $request->logo->move($path , $logo_name);
+
+
+        if($request->link != null){
+            Company::create([
+                'title'=> $request->title,
+                'description'=> $request->description,
+                'year'=> $request->year,
+                'image'=> $path.'/'.$image_name,
+                'logo'=> $path.'/'.$logo_name,
+                'link'=> $request->link,
+            ]);
+        }else{
+            Company::create([
+                'title'=> $request->title,
+                'description'=> $request->description,
+                'year'=> $request->year,
+                'image'=> $path.'/'.$image_name,
+                'logo'=> $path.'/'.$logo_name,
+
+            ]);
+        }
         return redirect()->route('companies.index');
     }
 
@@ -71,10 +90,30 @@ class CompanyController extends Controller
             $company->image = $path.'/'.$image_name;
         }
 
+        if($request->logo != null)
+        {
+            if($company->logo !=null){
+            $logo_path = public_path('images/companies/'.$company->logo);
+            if(File::exists($logo_path))
+                unlink($logo_path);
+            }
+
+
+            $logo_name = $request->logo->getClientOriginalName();
+            $logo_name = time().$logo_name;
+            $path = 'images/companies';
+            $request->logo->move($path , $logo_name);
+            
+            $company->logo = $path.'/'.$logo_name;
+        }
+
         $company->title = $request->title;
         $company->description = $request->description;
         $company->year = $request->year;
 
+        if($request->link != null){
+            $company->link = $request->link;
+        }
         $company->save();
         return redirect()->route('companies.index');
     }
@@ -86,6 +125,10 @@ class CompanyController extends Controller
         $image_path = public_path('images/companies/'.$company->image);
         if(File::exists($image_path)) 
             unlink($image_path);
+
+        $logo_path = public_path('images/companies/'.$company->logo);
+            if(File::exists($logo_path)) 
+                unlink($logo_path);
 
         $company->delete();
         return redirect()->route('companies.index'); 
