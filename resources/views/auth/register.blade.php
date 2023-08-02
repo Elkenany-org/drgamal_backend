@@ -76,6 +76,9 @@
                                         <input type="radio" id="{{ $option }}" name="role" value="{{ $option }}">
                                     </div>
                                 @endforeach                                
+                                @error('role')
+                                <div style="color: rgb(228, 57, 57)" role="alert">Please select role !</div>
+                                @enderror
                             </div>
                         </div>
                         <!-- end col -->
