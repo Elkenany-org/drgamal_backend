@@ -3,6 +3,7 @@
 @section('content')
 <head>
     <meta name="csrf-token" content="{{ csrf_token() }}">
+
 </head>
     <!-- ========== title-wrapper start ========== -->
     <div class="title-wrapper pt-30">
@@ -46,10 +47,14 @@
                                     <p>{{ $user->email }}</p>
                                 </td>
                                 <td>
-                                    <meta name="csrf-token" content="{{ csrf_token() }}">
-
-                                    <input type="checkbox" id="myCheckbox" value="{{$user->id}}" onchange="myCheckbox()" name="myCheckbox">
-                                    
+                                    <input type="checkbox" name="myCheckbox" id="myCheckbox" value="{{$user->id}}" onchange="myCheckbox(this)"
+                                    @if ($user->role == 'admin')
+                                        checked 
+                                    @endif
+                                    @if (Auth::id() == $user->id)
+                                        @disabled(true)     
+                                    @endif
+                                    >
                                 </td>
                                 
                             </tr>
@@ -65,33 +70,38 @@
             </div>
         </div>
     </div>
+
 @endsection
 
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-{{-- <script type="text/javascript"> --}}
 <script>
-    
-    function myCheckbox(){
-        var id = document.getElementById('myCheckbox').value;
-        var csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-
-        console.log(id);
+    function myCheckbox(id){
+        
+        var id = id.value;
         
         $.ajax({
-            type: 'POST',
-            url: '/update_role/'+id,
-            csrf_token: csrfToken,
-            
-        
+            url: "{{ route('update_role') }}",
+            method: "POST",
+            data: {
+                id: id,
+                _token: "{{ csrf_token() }}"
+            },
             success: function(response) {
-                alert(response);
                 console.log(response);
             },
-        })
-        
-    }
+            error: function(xhr) {
+                $('#result').html('An error occurred.');
+                console.log(xhr);
 
-</script>  
+            }
+        });
+    }
+</script>
+
+
+
+
+ 
 
