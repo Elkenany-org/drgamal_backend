@@ -80,7 +80,6 @@
     function myCheckbox(id){
         
         var id = id.value;
-        
         $.ajax({
             url: "{{ route('update_role') }}",
             method: "POST",
