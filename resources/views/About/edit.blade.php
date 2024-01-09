@@ -12,8 +12,8 @@
               <div class="col-12">
                 <div class="input-style-1">
                   <label for="about">عن دكتور جمال الكناني</label>
-                  <textarea name="about" id="textarea1" oninput="countCharacters(this,2)">{{$about->about}}</textarea>
-                  <div dir="ltr"><span id="2"></span></div>
+                  <textarea name="about" id="en" class="full-editor">{{$about?->about}}</textarea>
+                  {{-- <div dir="ltr"><span id="2"></span></div> --}}
                 </div>
               </div>
               
@@ -50,7 +50,6 @@
         var charCountElement = document.getElementById(id);
         charCountElement.innerText = inputField.value.length;
       }
-        
     </script>
 @endsection
 

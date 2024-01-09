@@ -21,9 +21,11 @@ class AboutController extends Controller
         ]);
         $about = About::find(1);
         
+        // dd($request->all() , $about);
         $about->about = $request->about;
         $about->save();
         
         return redirect()->route('home');
     }
+    
 }

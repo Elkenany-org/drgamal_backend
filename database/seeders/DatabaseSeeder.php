@@ -2,14 +2,15 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Support\Facades\Hash;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use Illuminate\Database\Seeder;
-use App\Models\User;
 use App\Models\About;
+// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\User;
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
+    
     /**
      * Seed the application's database.
      *
@@ -20,4 +21,5 @@ class DatabaseSeeder extends Seeder
         
         
     }
+    
 }

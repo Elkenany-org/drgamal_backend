@@ -2,12 +2,13 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Validation\Rule;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rule;
 
 class ProfileUpdateRequest extends FormRequest
 {
+    
     public function rules()
     {
         return [
@@ -28,4 +29,5 @@ class ProfileUpdateRequest extends FormRequest
             $this->request->remove('password');
         }
     }
+    
 }

@@ -1,22 +1,21 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\NewsController;
-use App\Http\Controllers\InfoController;
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\ContactUsController;
-use App\Http\Controllers\JobController;
-use App\Http\Controllers\ArticleController;
-use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\AboutController;
-use App\Http\Controllers\ImageController;
-use App\Http\Controllers\MetaDataPagesController;
 use App\Http\Controllers\AchievementController;
-use App\Http\Controllers\Auth\RegisterController;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\Auth\LoginController;
-
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\ContactUsController;
+use App\Http\Controllers\ImageController;
+use App\Http\Controllers\InfoController;
+use App\Http\Controllers\JobController;
+use App\Http\Controllers\MetaDataPagesController;
+use App\Http\Controllers\NewsController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,10 +31,10 @@ use App\Http\Controllers\Auth\LoginController;
 Route::get('/', function () {
     return view('home');
 });
+
 Route::get('/error', function () {
     return view('errors.404');
 })->name('error_page');
-
 
 //Companies
 Route::prefix('companies')->group(function () {
@@ -46,7 +45,6 @@ Route::prefix('companies')->group(function () {
     Route::post('/update/{id}' , [CompanyController::class,'update'])->name('companies.update');
     Route::get('/delete/{id}' , [CompanyController::class,'destroy'])->name('companies.delete');
 });
-
 
 //About
 Route::prefix('about')->group(function () {
@@ -94,7 +92,6 @@ Route::prefix('achievements')->group(function () {
     Route::get('/search' , [AchievementController::class,'search'])->name('achievements.search');
 });
 
-
 //info
 Route::prefix('info')->group(function () {
     Route::get('/' , [InfoController::class,'index'])->name('info.index');
@@ -133,12 +130,6 @@ Route::prefix('metadata')->group(function () {
     Route::get('/delete/{id}' , [MetaDataPagesController::class,'delete'])->name('metadata.delete');
 });
 
-
-
-
-
-
-
 //Jobs
 Route::prefix('job')->group(function () {
     Route::get('/' , [JobController::class,'index'])->name('Jobs.index');
@@ -154,11 +145,9 @@ Route::prefix('job')->group(function () {
     Route::get('/archive_search', [JobController::class, 'archive_search'])->name('Jobs.archive_search');
 });
 
-
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
 
 Route::middleware('auth')->group(function () {
     Route::view('about', 'about')->name('about');

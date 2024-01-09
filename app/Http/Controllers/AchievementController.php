@@ -3,11 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Achievement;
-use Illuminate\Http\Request;
 use File;
+use Illuminate\Http\Request;
 
 class AchievementController extends Controller
 {
+    
     public function index()
     {
         $achievements = Achievement::paginate(10);
@@ -79,8 +80,10 @@ class AchievementController extends Controller
         $achievement->delete();
         return redirect()->back();
     }
+    
     public function search(Request $request)
     {
         return $this->description_search($request , 'description' , new Achievement() , 'achievements' , 'achievements',false,'index');
     }
+    
 }

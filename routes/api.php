@@ -1,21 +1,21 @@
 <?php
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Api\ApiNewsController;
-use App\Http\Controllers\Api\ApiJobController;
 use App\Http\Controllers\Api\ApiAboutController;
-use App\Http\Controllers\Api\ApiImageController;
-use App\Http\Controllers\Api\ApiContactUsController;
-use App\Http\Controllers\Api\ApiCompanyController;
-use App\Http\Controllers\Api\ApiHomeController;
 use App\Http\Controllers\Api\ApiAchievementsController;
+use App\Http\Controllers\Api\ApiCompanyController;
+use App\Http\Controllers\Api\ApiContactUsController;
+use App\Http\Controllers\Api\ApiHomeController;
+use App\Http\Controllers\Api\ApiImageController;
+use App\Http\Controllers\Api\ApiJobController;
+use App\Http\Controllers\Api\ApiNewsController;
 
-use App\Models\News;
-use App\Models\Job;
 use App\Models\Category;
 use App\Models\ContactUs;
 use App\Models\Info;
+use App\Models\Job;
+use App\Models\News;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,7 +31,6 @@ use App\Models\Info;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-
 
 //news
 Route::prefix('news')->group(function () {
